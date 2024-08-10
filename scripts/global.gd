@@ -46,12 +46,8 @@ func load():
 		save()
 	var file = FileAccess.open(PATH, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
-	settings.highscore.city = data.highscore.city
-	settings.highscore.cave = data.highscore.cave
-	settings.highscore.space = data.highscore.space
+	#settings = data
+	settings.highscore = data.highscore
 	settings.prev_played = data.prev_played
-	settings.volume.master = data.volume.master
-	settings.volume.music = data.volume.music
-	settings.volume.sound = data.volume.sound
-	
+	settings.volume = data.volume
 	file.close()
