@@ -1,0 +1,206 @@
+[gd_scene load_steps=30 format=3 uid="uid://dmi3m78h47ick"]
+
+[ext_resource type="Texture2D" uid="uid://bmckbivh1b507" path="res://assets/sprites/fire.png" id="1_n0so1"]
+[ext_resource type="Script" path="res://scripts/falling_enemy.gd" id="2_no1gq"]
+[ext_resource type="PackedScene" uid="uid://cllvne078vwjn" path="res://scenes/killzone.tscn" id="2_wruuo"]
+[ext_resource type="AudioStream" uid="uid://coyfbm3n57jfl" path="res://assets/sounds/fire-extinguish.mp3" id="3_6w5ls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d83xo"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(0, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6g01"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy01f"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wghx2"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vs67"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25t7t"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb0e8"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(535, 0, 107, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb35u"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(600, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n71un"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(450, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4rqk"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(300, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18s4j"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(150, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20kqf"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(0, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cyd1"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(600, 300, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm1md"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(450, 300, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgbbk"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(300, 300, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi405"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(150, 300, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0msl"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(0, 300, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok507"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(600, 450, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l4xt"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(450, 450, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbiv1"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(300, 450, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hagwa"]
+atlas = ExtResource("1_n0so1")
+region = Rect2(150, 450, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g64d4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d83xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6g01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy01f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wghx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vs67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25t7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb0e8")
+}],
+"loop": false,
+"name": &"crash",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb35u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n71un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4rqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18s4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20kqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cyd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm1md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgbbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi405")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0msl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok507")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l4xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbiv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hagwa")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahx40"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="Gradient" id="Gradient_v6tky"]
+offsets = PackedFloat32Array(0, 0.596639)
+colors = PackedColorArray(1, 1, 1, 1, 0.0588235, 0.0588235, 0.0588235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cad8a"]
+gradient = SubResource("Gradient_v6tky")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Fire" type="AnimatedSprite2D"]
+position = Vector2(0, -75)
+sprite_frames = SubResource("SpriteFrames_g64d4")
+animation = &"fall"
+autoplay = "fall"
+frame_progress = 0.372304
+script = ExtResource("2_no1gq")
+
+[node name="Killzone" parent="." instance=ExtResource("2_wruuo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_ahx40")
+
+[node name="Collision" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6w5ls")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(5.96046e-08, 7)
+scale = Vector2(1.03125, 1.03125)
+color = Color(1, 0.862745, 0, 1)
+texture = SubResource("GradientTexture2D_cad8a")
+
+[connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]

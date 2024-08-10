@@ -1,0 +1,245 @@
+[gd_scene load_steps=13 format=3 uid="uid://jpwqsd1reifg"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_jhrcq"]
+[ext_resource type="FontFile" uid="uid://bks5ijsbu0wkh" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_ga4gn"]
+[ext_resource type="PackedScene" uid="uid://bri5b2nevv5du" path="res://scenes/display/options.tscn" id="4_7a1qx"]
+[ext_resource type="Theme" uid="uid://bsd8gqjrjk81b" path="res://assets/misc/new_theme.tres" id="4_wr35k"]
+[ext_resource type="Texture2D" uid="uid://b82efp7orklii" path="res://assets/gui/city_button.png" id="4_x015v"]
+[ext_resource type="Texture2D" uid="uid://bmcsm6uw5pc5l" path="res://assets/gui/cave_button.png" id="5_lyy47"]
+[ext_resource type="Texture2D" uid="uid://dmfyroob72eww" path="res://assets/gui/space_button.png" id="6_66uq6"]
+[ext_resource type="AudioStream" uid="uid://8garjolwh7ik" path="res://assets/music/main_menu.ogg" id="8_mrydj"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_utxob"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qpnen"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_o6kwr"]
+offsets = PackedFloat32Array(0.0606061, 0.94697)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.32549, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_60dfx"]
+gradient = SubResource("Gradient_o6kwr")
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.7)
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_jhrcq")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_wr35k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 7.0
+offset_bottom = 59.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("4_wr35k")
+text = "Highscore"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HS" type="Label" parent="Menu/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotButContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.95
+anchor_right = 0.85
+anchor_bottom = 0.95
+offset_top = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+
+[node name="Play" type="Button" parent="Menu/BotButContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_ga4gn")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="Options" type="Button" parent="Menu/BotButContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Options"
+
+[node name="City" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -250.0
+offset_right = -154.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.84, 5.16)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_utxob")
+icon = ExtResource("4_x015v")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Cave" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -250.0
+offset_right = -22.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.84, 5.16)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_utxob")
+icon = ExtResource("5_lyy47")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Space" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = -250.0
+offset_right = 107.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.84, 5.16)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_utxob")
+icon = ExtResource("6_66uq6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Options" parent="." instance=ExtResource("4_7a1qx")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Preview" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_right = 728.0
+offset_bottom = 1255.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.333, 0.35)
+volume_db = -80.0
+loop = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_qpnen")
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -73.0
+offset_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 24
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "
+  [wave amp=40 freq=5 connected=0]ASCEND[/wave] "
+scroll_active = false
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/RichTextLabel"]
+position = Vector2(207, 72)
+scale = Vector2(5.60938, 2.27344)
+blend_mode = 2
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_60dfx")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_qpnen")
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -73.0
+offset_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "
+  [wave amp=40 freq=5 connected=0]ASCEND[/wave] "
+scroll_active = false
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mrydj")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="Menu/BotButContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/BotButContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="toggled" from="Menu/City" to="." method="_on_city_toggled"]
+[connection signal="toggled" from="Menu/Cave" to="." method="_on_cave_toggled"]
+[connection signal="toggled" from="Menu/Space" to="." method="_on_space_toggled"]

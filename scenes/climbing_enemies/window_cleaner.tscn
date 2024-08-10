@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://bapj73bou7yc8"]
+
+[ext_resource type="Texture2D" uid="uid://cgmbxxysg517u" path="res://assets/sprites/cleaner.png" id="1_btm7n"]
+[ext_resource type="PackedScene" uid="uid://cllvne078vwjn" path="res://scenes/killzone.tscn" id="2_ba465"]
+[ext_resource type="AudioStream" uid="uid://bb8n51iiktu7a" path="res://assets/sounds/metal_squeak.mp3" id="3_0261b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q05a"]
+atlas = ExtResource("1_btm7n")
+region = Rect2(0, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp2nj"]
+atlas = ExtResource("1_btm7n")
+region = Rect2(0, 64, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn7pd"]
+atlas = ExtResource("1_btm7n")
+region = Rect2(0, 128, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odhuv"]
+atlas = ExtResource("1_btm7n")
+region = Rect2(0, 192, 256, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27jav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q05a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp2nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn7pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odhuv")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b2gg2"]
+
+[node name="WindowCleaner" type="AnimatedSprite2D"]
+position = Vector2(0, -2)
+scale = Vector2(1.16562, 1.09375)
+sprite_frames = SubResource("SpriteFrames_27jav")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="Killzone" parent="." instance=ExtResource("2_ba465")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, -25.6)
+shape = SubResource("WorldBoundaryShape2D_b2gg2")
+debug_color = Color(0.971796, 0.168763, 1.15514e-06, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0261b")
+volume_db = -10.0
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"

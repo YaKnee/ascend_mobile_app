@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://t8lsevmtiscv"]
+
+[ext_resource type="Texture2D" uid="uid://ct5lan60ymvhl" path="res://assets/sprites/falling_flower.png" id="1_c6qnf"]
+[ext_resource type="Script" path="res://scripts/potted_plant.gd" id="1_kxrcf"]
+[ext_resource type="PackedScene" uid="uid://cllvne078vwjn" path="res://scenes/killzone.tscn" id="2_xpwht"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7p5v"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol45p"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u1fy"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg37s"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0niq"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(288, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h7lq"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(336, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu3ac"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(336, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2qhs"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j347"]
+atlas = ExtResource("1_c6qnf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_opfrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol45p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u1fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg37s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0niq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h7lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu3ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h7lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h7lq")
+}],
+"loop": true,
+"name": &"crash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2qhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j347")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 2.0
+}]
+
+[node name="PottedPlant" type="Node2D"]
+position = Vector2(-7, -12)
+script = ExtResource("1_kxrcf")
+
+[node name="Killzone" parent="." instance=ExtResource("2_xpwht")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(7, 10)
+shape = SubResource("CapsuleShape2D_d7p5v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Killzone"]
+sprite_frames = SubResource("SpriteFrames_opfrf")
+animation = &"fall"
+autoplay = "fall"
+frame_progress = 0.799533

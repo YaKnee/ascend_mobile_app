@@ -1,0 +1,384 @@
+[gd_scene load_steps=12 format=3 uid="uid://bri5b2nevv5du"]
+
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_1tqxl"]
+[ext_resource type="Shader" path="res://assets/misc/blur.gdshader" id="2_3smc1"]
+[ext_resource type="FontFile" uid="uid://bks5ijsbu0wkh" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_33bxf"]
+[ext_resource type="FontFile" uid="uid://bo3ihkq2am210" path="res://assets/fonts/PixelOperator8.ttf" id="3_4b7oi"]
+[ext_resource type="Theme" uid="uid://bsd8gqjrjk81b" path="res://assets/misc/new_theme.tres" id="3_j7ww3"]
+[ext_resource type="Texture2D" uid="uid://bn4d1d8vu235h" path="res://assets/gui/wd_close.png" id="4_b0fpl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7as2"]
+shader = ExtResource("2_3smc1")
+shader_parameter/lod = 0.0
+shader_parameter/darken = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkm16"]
+shader = ExtResource("2_3smc1")
+shader_parameter/lod = 0.8
+shader_parameter/darken = 0.5
+
+[sub_resource type="Animation" id="Animation_8s7em"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uyl17"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4kaq"]
+_data = {
+"RESET": SubResource("Animation_8s7em"),
+"blur": SubResource("Animation_uyl17")
+}
+
+[node name="Options" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_j7ww3")
+script = ExtResource("1_1tqxl")
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_e7as2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 10.0
+offset_left = 8.5
+offset_top = 10.0
+offset_right = -8.5
+offset_bottom = -5770.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"SquareButton"
+icon = ExtResource("4_b0fpl")
+icon_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Desc" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Desc"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VolumLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Desc"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+theme_override_fonts/font = ExtResource("2_33bxf")
+theme_override_font_sizes/font_size = 24
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="MuteLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Desc"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_33bxf")
+theme_override_font_sizes/font_size = 8
+text = "Mute
+"
+horizontal_alignment = 1
+
+[node name="Volume" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Labels" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_4b7oi")
+theme_override_font_sizes/font_size = 16
+text = "Master"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_4b7oi")
+theme_override_font_sizes/font_size = 16
+text = "Music"
+horizontal_alignment = 1
+
+[node name="SoundLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_4b7oi")
+theme_override_font_sizes/font_size = 16
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="UILabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_4b7oi")
+theme_override_font_sizes/font_size = 16
+text = "UI
+"
+horizontal_alignment = 1
+
+[node name="Sliders" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="MasterSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="SoundSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="UI" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="CheckBoxes" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterCheck" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+
+[node name="MusicCheck" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+
+[node name="SoundCheck" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+
+[node name="UICheck" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_type_variation = &"SquareButton"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Credits"
+underline = 1
+uri = "https://yaknee.github.io/ascend.html"
+
+[node name="Reset" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+focus_mode = 0
+text = "Reset Highscore"
+
+[node name="PopupBlur" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pkm16")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Popup" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 240.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup"]
+layout_mode = 2
+
+[node name="ClosePopup" type="Button" parent="Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"SquareButton"
+icon = ExtResource("4_b0fpl")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_4b7oi")
+theme_override_font_sizes/font_size = 16
+text = "Do you really want to reset 
+your highscore?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 7
+
+[node name="Reset2" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_4b7oi")
+theme_override_font_sizes/font_size = 16
+text = "Reset"
+
+[node name="Cancel" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_33bxf")
+theme_override_font_sizes/font_size = 16
+text = "Cancel"
+
+[node name="Spacer" type="Control" parent="Popup/VBoxContainer/HBoxContainer/Cancel"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d4kaq")
+}
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders/MasterSlider" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders/MusicSlider" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders/SoundSlider" to="." method="_on_sound_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/Sliders/UI" to="." method="_on_ui_value_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/MasterCheck" to="." method="_on_master_check_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/MusicCheck" to="." method="_on_music_check_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/SoundCheck" to="." method="_on_sound_check_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/UICheck" to="." method="_on_ui_check_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/ClosePopup" to="." method="_on_close_popup_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Reset2" to="." method="_on_reset_2_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]

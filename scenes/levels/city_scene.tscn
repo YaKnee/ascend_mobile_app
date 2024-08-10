@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://wq38fxxmxnks"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_23nf6"]
+[ext_resource type="PackedScene" uid="uid://c11bcen5833jv" path="res://scenes/players/cat.tscn" id="2_fvmm8"]
+[ext_resource type="PackedScene" uid="uid://brc8bv6se05gr" path="res://scenes/display/hud.tscn" id="3_etisn"]
+[ext_resource type="PackedScene" uid="uid://bapj73bou7yc8" path="res://scenes/climbing_enemies/window_cleaner.tscn" id="4_pbpcg"]
+[ext_resource type="Texture2D" uid="uid://dxw5vibgk282k" path="res://assets/background/city_walls.png" id="5_fc13d"]
+[ext_resource type="Texture2D" uid="uid://bd3e53tryldji" path="res://assets/background/city1.png" id="6_hnvkw"]
+[ext_resource type="Texture2D" uid="uid://dhc5lj03yhjpg" path="res://assets/background/city2.png" id="7_diepa"]
+[ext_resource type="Texture2D" uid="uid://lrjjiunq2f4" path="res://assets/background/city3.png" id="8_xe1a8"]
+[ext_resource type="Texture2D" uid="uid://dlwmm30jfebhs" path="res://assets/background/city5.png" id="9_tnpph"]
+[ext_resource type="Texture2D" uid="uid://bvk3o41vmspqf" path="res://assets/background/city4.png" id="10_qhcrj"]
+[ext_resource type="AudioStream" uid="uid://b5i44w4xo28sc" path="res://assets/music/city_bg.ogg" id="11_6wylu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fde0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5508w"]
+size = Vector2(30, 1280)
+
+[node name="CityScene" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_23nf6")
+
+[node name="Player" parent="." instance=ExtResource("2_fvmm8")]
+z_index = 99
+position = Vector2(34, 0)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-3, -7)
+limit_left = 0
+limit_right = 360
+limit_bottom = 640
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Player/Camera2D"]
+position = Vector2(0, -110)
+shape = SubResource("WorldBoundaryShape2D_fde0o")
+shape_centered = false
+passby_press = true
+action = "jump"
+
+[node name="HUD" parent="." instance=ExtResource("3_etisn")]
+
+[node name="BottomEnemy" type="Node2D" parent="."]
+position = Vector2(180, 640)
+
+[node name="WindowCleaner" parent="BottomEnemy" instance=ExtResource("4_pbpcg")]
+position = Vector2(0, 0)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(0, -640)
+collision_layer = 4
+collision_mask = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(180, 640)
+texture = ExtResource("5_fc13d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(15, 640)
+shape = SubResource("RectangleShape2D_5508w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(345, 640)
+shape = SubResource("RectangleShape2D_5508w")
+
+[node name="CityBG" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CityBG"]
+texture = ExtResource("6_hnvkw")
+centered = false
+
+[node name="P1" type="ParallaxLayer" parent="CityBG"]
+motion_scale = Vector2(1, 0.3)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CityBG/P1"]
+texture = ExtResource("7_diepa")
+centered = false
+
+[node name="P2" type="ParallaxLayer" parent="CityBG"]
+motion_scale = Vector2(1, 0.4)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CityBG/P2"]
+texture = ExtResource("8_xe1a8")
+centered = false
+
+[node name="P3" type="ParallaxLayer" parent="CityBG"]
+motion_scale = Vector2(1, 0.5)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CityBG/P3"]
+texture = ExtResource("10_qhcrj")
+centered = false
+
+[node name="P4" type="ParallaxLayer" parent="CityBG"]
+motion_scale = Vector2(1, 0.6)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CityBG/P4"]
+texture = ExtResource("9_tnpph")
+centered = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6wylu")
+volume_db = -16.0
+autoplay = true
+bus = &"Music"

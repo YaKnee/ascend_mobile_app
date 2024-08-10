@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://wq38fxxmxnks"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_tosrf"]
+[ext_resource type="PackedScene" uid="uid://b8vmam0chwtfg" path="res://scenes/player.tscn" id="2_h7y2i"]
+[ext_resource type="PackedScene" uid="uid://ben5f8gpqehs0" path="res://scenes/vertical_background.tscn" id="2_mwt53"]
+[ext_resource type="PackedScene" uid="uid://brc8bv6se05gr" path="res://scenes/hud.tscn" id="3_052b1"]
+[ext_resource type="PackedScene" uid="uid://cr5rmehaes6h7" path="res://scenes/walls.tscn" id="3_l0gb3"]
+[ext_resource type="PackedScene" uid="uid://w5xkjlfkv0qs" path="res://scenes/window_cleaner.tscn" id="4_xllqu"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_tosrf")
+
+[node name="Player" parent="." instance=ExtResource("2_h7y2i")]
+position = Vector2(180, 321)
+scale = Vector2(2.5, 2.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0.8, 0)
+limit_left = 0
+limit_right = 348
+limit_bottom = 640
+
+[node name="HUD" parent="Player/Camera2D" instance=ExtResource("3_052b1")]
+
+[node name="Walls" parent="." instance=ExtResource("3_l0gb3")]
+position = Vector2(2, -616)
+
+[node name="WindowCleaner" parent="." instance=ExtResource("4_xllqu")]
+position = Vector2(180, 587)
+scale = Vector2(0.760001, 1)
+
+[node name="VerticalBackground" parent="." instance=ExtResource("2_mwt53")]
+
+[node name="Timer" type="Timer" parent="."]

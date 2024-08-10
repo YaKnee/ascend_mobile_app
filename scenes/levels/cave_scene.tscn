@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://dwffv7cofpwge"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_aqdl5"]
+[ext_resource type="PackedScene" uid="uid://bla87k8nhyu3x" path="res://scenes/players/climber.tscn" id="2_uhunt"]
+[ext_resource type="PackedScene" uid="uid://brc8bv6se05gr" path="res://scenes/display/hud.tscn" id="3_1qqnm"]
+[ext_resource type="PackedScene" uid="uid://b0ib65t4pv85r" path="res://scenes/climbing_enemies/lava.tscn" id="4_iqws6"]
+[ext_resource type="Texture2D" uid="uid://dovwuc3lfh5b" path="res://assets/background/cave_walls.png" id="5_t104j"]
+[ext_resource type="Texture2D" uid="uid://3hioq8mt2um7" path="res://assets/background/cave1.png" id="6_2ctvo"]
+[ext_resource type="Texture2D" uid="uid://cchj8c8hbbxcj" path="res://assets/background/cave2.png" id="7_wmwmu"]
+[ext_resource type="Texture2D" uid="uid://cyja8rsv65q5w" path="res://assets/background/cave3.png" id="8_hj7vl"]
+[ext_resource type="Texture2D" uid="uid://cdygj4pqi578m" path="res://assets/background/cave4.png" id="9_1i1md"]
+[ext_resource type="Texture2D" uid="uid://b21teay87pnls" path="res://assets/background/cave5.png" id="10_ahrcq"]
+[ext_resource type="Texture2D" uid="uid://dfqwpoe3tqo6j" path="res://assets/background/cave6.png" id="11_ccjna"]
+[ext_resource type="Texture2D" uid="uid://cq647gnqrdeht" path="res://assets/background/cave7.png" id="12_053qx"]
+[ext_resource type="AudioStream" uid="uid://b5o7vdjo7fl7y" path="res://assets/music/cave_bg.ogg" id="13_u8edg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_du2du"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txddt"]
+size = Vector2(30, 1280)
+
+[node name="CaveScene" type="Node2D"]
+script = ExtResource("1_aqdl5")
+
+[node name="Player" parent="." instance=ExtResource("2_uhunt")]
+z_index = 99
+position = Vector2(34, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1.78814e-06, 7.60002)
+limit_left = 0
+limit_right = 360
+limit_bottom = 640
+position_smoothing_enabled = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Player/Camera2D"]
+position = Vector2(0, -140)
+shape = SubResource("WorldBoundaryShape2D_du2du")
+shape_centered = false
+passby_press = true
+action = "jump"
+
+[node name="HUD" parent="." instance=ExtResource("3_1qqnm")]
+
+[node name="BottomEnemy" type="Node2D" parent="."]
+position = Vector2(180, 640)
+
+[node name="Lava" parent="BottomEnemy" instance=ExtResource("4_iqws6")]
+position = Vector2(2, 214)
+scale = Vector2(1.61834, 1.162)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(0, -640)
+collision_layer = 4
+collision_mask = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(180, 640)
+texture = ExtResource("5_t104j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(15, 640)
+shape = SubResource("RectangleShape2D_txddt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(345, 640)
+shape = SubResource("RectangleShape2D_txddt")
+
+[node name="CaveBG" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG"]
+position = Vector2(180, 320)
+texture = ExtResource("6_2ctvo")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CaveBG"]
+motion_scale = Vector2(1, 0.4)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG/ParallaxLayer"]
+position = Vector2(180, 320)
+texture = ExtResource("7_wmwmu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CaveBG"]
+motion_scale = Vector2(1, 0.5)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG/ParallaxLayer2"]
+position = Vector2(180, 320)
+texture = ExtResource("8_hj7vl")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="CaveBG"]
+motion_scale = Vector2(1, 0.6)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG/ParallaxLayer3"]
+position = Vector2(180, 320)
+texture = ExtResource("9_1i1md")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="CaveBG"]
+motion_scale = Vector2(1, 0.7)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG/ParallaxLayer4"]
+position = Vector2(180, 320)
+texture = ExtResource("10_ahrcq")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="CaveBG"]
+motion_scale = Vector2(1, 0.8)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG/ParallaxLayer5"]
+position = Vector2(180, 320)
+texture = ExtResource("11_ccjna")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="CaveBG"]
+motion_scale = Vector2(1, 0.9)
+motion_mirroring = Vector2(0, 640)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaveBG/ParallaxLayer6"]
+position = Vector2(180, 320)
+texture = ExtResource("12_053qx")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_u8edg")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+show_behind_parent = true
+energy = 0.3
+blend_mode = 1

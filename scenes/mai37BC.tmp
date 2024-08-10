@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtb4iao73h10b"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_jhrcq"]
+[ext_resource type="FontFile" uid="uid://bo3ihkq2am210" path="res://assets/fonts/PixelOperator8.ttf" id="1_prtkd"]
+[ext_resource type="FontFile" uid="uid://bks5ijsbu0wkh" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_ga4gn"]
+[ext_resource type="PackedScene" uid="uid://bri5b2nevv5du" path="res://scenes/options.tscn" id="4_7a1qx"]
+[ext_resource type="VideoStream" path="res://assets/video/Menu_BG.ogv" id="5_81d5g"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_utxob"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_jhrcq")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Menu"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 470.0
+offset_right = 350.0
+offset_bottom = 518.0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_ga4gn")
+theme_override_font_sizes/font_size = 40
+text = "Play
+"
+
+[node name="Options" type="Button" parent="Menu"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 525.0
+offset_right = 350.0
+offset_bottom = 570.0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_prtkd")
+theme_override_font_sizes/font_size = 36
+text = "Options"
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 408.0
+offset_bottom = 40.0
+scale = Vector2(0.76, 1.48)
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_prtkd")
+text = "Highscore: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="City" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -250.0
+offset_right = -154.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.84, 5.16)
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_utxob")
+
+[node name="Cave" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -250.0
+offset_right = -22.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.84, 5.16)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_utxob")
+
+[node name="Space" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = -250.0
+offset_right = 107.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.84, 5.16)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_utxob")
+
+[node name="Options" parent="." instance=ExtResource("4_7a1qx")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+offset_top = -26.0
+offset_right = 1088.0
+offset_bottom = 1894.0
+scale = Vector2(0.333, 0.35)
+stream = ExtResource("5_81d5g")
+autoplay = true
+loop = true
+
+[connection signal="pressed" from="Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
+[connection signal="toggled" from="Menu/City" to="." method="_on_city_toggled"]
+[connection signal="toggled" from="Menu/Cave" to="." method="_on_cave_toggled"]
+[connection signal="toggled" from="Menu/Space" to="." method="_on_space_toggled"]

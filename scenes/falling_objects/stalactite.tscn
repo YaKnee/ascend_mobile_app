@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://blr3gb3ldfefl"]
+
+[ext_resource type="Texture2D" uid="uid://e1u304nw64u7" path="res://assets/sprites/stalactite.png" id="2_dfqdo"]
+[ext_resource type="Script" path="res://scripts/falling_enemy.gd" id="3_23yfc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f16d"]
+atlas = ExtResource("2_dfqdo")
+region = Rect2(0, 0, 78, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cpvq"]
+atlas = ExtResource("2_dfqdo")
+region = Rect2(78, 0, 78, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6vtd"]
+atlas = ExtResource("2_dfqdo")
+region = Rect2(78, 0, 78, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbid3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f16d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cpvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f16d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cpvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f16d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cpvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f16d")
+}],
+"loop": false,
+"name": &"crash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6vtd")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akyrs"]
+size = Vector2(10, 95)
+
+[node name="Stalactite" type="AnimatedSprite2D"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_mbid3")
+animation = &"fall"
+autoplay = "fall"
+script = ExtResource("3_23yfc")
+
+[node name="ClimbArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea"]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_akyrs")
+
+[node name="Collision" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
+[connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
