@@ -1,0 +1,429 @@
+[gd_scene load_steps=4 format=3 uid="uid://shext66nsfe2"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_7lpws"]
+[ext_resource type="Texture2D" uid="uid://bn4d1d8vu235h" path="res://assets/gui/wd_close.png" id="1_ma7xd"]
+[ext_resource type="Theme" uid="uid://bsd8gqjrjk81b" path="res://assets/misc/new_theme.tres" id="1_tdnrm"]
+
+[node name="Credits" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7lpws")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 36
+text = "Credits"
+
+[node name="Close" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_tdnrm")
+theme_type_variation = &"SquareButton"
+icon = ExtResource("1_ma7xd")
+icon_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CreditsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Misc" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+
+[node name="yaknee" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/Misc"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Programming and Any Unmentioned Assets
+- [url=\"https://yaknee.github.io\"][color=orange]YaKnee[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/Misc"]
+layout_mode = 2
+
+[node name="ArtContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Art"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+
+[node name="zegley" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Pixel Character Template 
+- [url=\"https://zegley.itch.io/2d-platformermetroidvania-asset-pack\"][color=orange]Zegley[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="lava" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Lava Animation
+- [url=\"https://dribbble.com/shots/2303888-Lava-Animation\"][color=orange]Luis Zuno[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="cat" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Pixel Cat Spritesheet
+- [url=\"https://pop-shop-packs.itch.io/\"][color=orange]Pop Shop Packs[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="raph" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Chasing Blackhole
+- [url=\"https://ragnapixel.itch.io/particle-fx\"][color=orange]Raphael Hatencia[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="raph2" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Spaceship Emission
+- [url=\"https://ragnapixel.itch.io/particle-fx\"][color=orange]Raphael Hatencia[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="raph3" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Space Enemy Beam
+- [url=\"https://ragnapixel.itch.io/particle-fx\"][color=orange]Raphael Hatencia[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="raph4" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Cave Falling Fire
+- [url=\"https://ragnapixel.itch.io/particle-fx\"][color=orange]Raphael Hatencia[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer"]
+layout_mode = 2
+
+[node name="MusicContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+
+[node name="main" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Main Menu
+- [url=\"https://www.fesliyanstudios.com/royalty-free-music/download/funny-bit/2399\"][color=orange]David Renda[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="option" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Option Menu
+- [url=\"https://pixabay.com/music/video-games-waiting-time-175800/\"][color=orange]Lesiakower[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="city" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "City
+- [url=\"https://pixabay.com/sound-effects/026491-pixel-song-8-72675/\"][color=orange]freesound_community[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="cave" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Cave
+- [url=\"https://rustedstudio.itch.io/free-music-10-spooky-8bit-tracks\"][color=orange]RustedMusicStudio[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="space" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Space
+- [url=\"https://www.pond5.com/royalty-free-music/item/154774154-space-8-bit-classic-video-game\"][color=orange]Efimus[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer"]
+layout_mode = 2
+
+[node name="SFXContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+
+[node name="highscore" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Highscore
+- [url=\"https://pixabay.com/sound-effects/winsquare-6993/\"][color=orange]Fupicat[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="climber" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Climber Death
+- [url=\"https://pixabay.com/sound-effects/male-death-sound-128357/\"][color=orange]Vinodadora[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="CatMeow" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Cat Meow
+- [url=\"https://pixabay.com/sound-effects/mjau3-82957/\"][color=orange]Andreas.Mustola[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="CatSlash" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+bbcode_enabled = true
+text = "Cat Claws
+- [url=\"https://pixabay.com/sound-effects/slashkut-108175/\"][color=orange]Abyssmal[/color][/url]
+
+"
+fit_content = true
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer"]
+layout_mode = 2
+
+[node name="ResetTimer" type="Timer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer"]
+wait_time = 3.0
+
+[node name="AutoScrollTimer" type="Timer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer"]
+wait_time = 2.0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_gui_input"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/Misc/yaknee" to="." method="_on_yaknee_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/zegley" to="." method="_on_zegley_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/lava" to="." method="_on_lava_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/cat" to="." method="_on_cat_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/raph" to="." method="_on_raph_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/raph2" to="." method="_on_raph_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/raph3" to="." method="_on_raph_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ArtContainer/raph4" to="." method="_on_raph_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer/main" to="." method="_on_main_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer/option" to="." method="_on_option_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer/city" to="." method="_on_city_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer/cave" to="." method="_on_cave_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/MusicContainer/space" to="." method="_on_space_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer/highscore" to="." method="_on_highscore_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer/climber" to="." method="_on_climber_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer/CatMeow" to="." method="_on_cat_meow_meta_clicked"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/SFXContainer/CatSlash" to="." method="_on_cat_slash_meta_clicked"]
+[connection signal="timeout" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="timeout" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CreditsContainer/AutoScrollTimer" to="." method="_on_auto_scroll_timer_timeout"]

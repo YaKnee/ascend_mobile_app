@@ -119,7 +119,7 @@ func update_game(delta: float):
 	#if speed < MAX_SPEED and Global.score > 0 and Global.score % 100 == 0 and !speed_updated:
 	#	speed += 0.1
 	#	speed_updated = true
-	## Reset the speed_updated flag when Global.score is not a multiple of 10
+	## Reset the speed_updated flag when Global.score is not a multiple of 100
 	#if Global.score % 100 != 0:
 	#	speed_updated = false
 

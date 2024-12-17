@@ -17,6 +17,7 @@ extends Control
 @onready var music_check = $PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/MusicCheck
 @onready var sound_check = $PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/SoundCheck
 @onready var ui_check = $PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/UICheck
+@onready var credits = $PanelContainer/Credits
 
 func _ready():
 	Global.load()
@@ -30,6 +31,7 @@ func _ready():
 		Global.settings.volume.ui.value, Global.settings.volume.ui.muted)
 	popup.hide()
 	popup_blur.hide()
+	credits.visible = false
 	hide()
 	get_tree().paused = false
 	
@@ -72,6 +74,10 @@ func _on_ui_check_pressed():
 	AudioManager.mute_bus(UI_AUDIO_BUS)
 	AudioManager.play_select(self)
 	
+# Display Credits Scene
+func _on_credits_pressed():
+	credits.visible = true
+	
 #Reset Highscore (PopUp)
 func _on_reset_pressed():
 	AudioManager.play_select(self)
@@ -93,9 +99,5 @@ func _on_reset_2_pressed():
 	if find_parent("MainMenu") != null: #reset highscore text
 		find_parent("MainMenu")._ready()
 	close_popup()
-
-
-
-
 
 

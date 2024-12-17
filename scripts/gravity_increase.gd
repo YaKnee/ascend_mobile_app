@@ -10,6 +10,8 @@ func _on_body_entered(body):
 		toggle_rocket_light(body, false)
 		warning.play("flash")
 		alter_gravity(body, true)
+	if body is FallingEnemy:
+		body.fall_speed *= 4
 
 func _on_body_exited(body):
 	if body is Player:

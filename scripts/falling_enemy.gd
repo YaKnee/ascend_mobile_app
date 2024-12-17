@@ -19,6 +19,7 @@ func _ready():
 	rng.randomize()
 	if not is_ray:
 		scale.x = -scale.x if rng.randf() > 0.5 else scale.x
+
 func _process(delta):
 	if Global.player_died:
 		position.y += 0

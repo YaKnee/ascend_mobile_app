@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bri5b2nevv5du"]
+[gd_scene load_steps=13 format=3 uid="uid://bri5b2nevv5du"]
 
 [ext_resource type="Script" path="res://scripts/options.gd" id="1_1tqxl"]
 [ext_resource type="Shader" path="res://assets/misc/blur.gdshader" id="2_3smc1"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bo3ihkq2am210" path="res://assets/fonts/PixelOperator8.ttf" id="3_4b7oi"]
 [ext_resource type="Theme" uid="uid://bsd8gqjrjk81b" path="res://assets/misc/new_theme.tres" id="3_j7ww3"]
 [ext_resource type="Texture2D" uid="uid://bn4d1d8vu235h" path="res://assets/gui/wd_close.png" id="4_b0fpl"]
+[ext_resource type="PackedScene" uid="uid://shext66nsfe2" path="res://scenes/display/credits.tscn" id="7_xs04x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7as2"]
 shader = ExtResource("2_3smc1")
@@ -283,13 +284,11 @@ layout_mode = 2
 [node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Credits"
-underline = 1
-uri = "https://yaknee.github.io/ascend.html"
 
 [node name="Reset" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -297,6 +296,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 focus_mode = 0
 text = "Reset Highscore"
+
+[node name="Credits" parent="PanelContainer" instance=ExtResource("7_xs04x")]
+visible = false
+layout_mode = 2
 
 [node name="PopupBlur" type="ColorRect" parent="."]
 visible = false
@@ -378,6 +381,7 @@ libraries = {
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/MusicCheck" to="." method="_on_music_check_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/SoundCheck" to="." method="_on_sound_check_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Volume/CheckBoxes/UICheck" to="." method="_on_ui_check_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/ClosePopup" to="." method="_on_close_popup_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Reset2" to="." method="_on_reset_2_pressed"]

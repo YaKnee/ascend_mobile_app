@@ -33,6 +33,7 @@ window/size/viewport_height=640
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 window/handheld/orientation=1
 window/ios/hide_home_indicator=false
 window/ios/hide_status_bar=false
